@@ -1,0 +1,9 @@
+storm.zookeeper.servers:
+   - "tasks.zookeeper.mercury"
+nimbus.seeds:
+   - "tasks.nimbus.mercury"
+drpc.servers:
+   - "tasks.nimbus.mercury"
+drpc.port: 3772
+drpc.invocations.port: 3773
+storm.local.hostname: 5678
