@@ -14,7 +14,7 @@ Create a swarm and an overlay or bridge network `mynet`
 docker secret create storm_password -
 
 
-# we need zookeeper, ZOO_SERVERS env just appends to zoo.conf so we can get the auto purege in that way
+# we need zookeeper, ZOO_SERVERS env just appends to zoo.conf so we can get the auto purge to work in that way
 docker service create --name zookeeper \
   --network mynet \
   -p 2181:2181 \
@@ -83,7 +83,22 @@ docker service rm storm_venv
 ```
 
 # Configuration
-see [storm/start-supervisor.sh](https://github.com/Richard-Mathie/storm_swarm/blob/master/storm/start-supervisor.sh) for how configuration and networking is set and storm.yaml is genorated.
+see [storm/start-supervisor.sh](https://github.com/Richard-Mathie/storm_swarm/blob/master/storm/start-supervisor.sh) for how configuration and networking is set and storm.yaml is generated.
 ```
+# hostname -i doesn't always grab the ip of the network you want so you can set some commands to get the correct advertised ip address
+HOST_INTERFACE # default host interface to grab ip
+HOST_COMMAND   # command to return the Host ip
 
+ZOOKEEPER_HOSTS="tasks.zookeeper.mercury"}
+ZOOKEEPER_COMMAND="hosts_to_yaml $ZOOKEEPER_HOSTS"}
+
+NIMBUS_HOSTS="tasks.nimbus.mercury"}
+NIMBUS_COMMAND="hosts_to_yaml $NIMBUS_HOSTS"}
+DRPC_COMMAND="hosts_to_yaml $NIMBUS_HOSTS"}
+
+STORM_PASSWORD  # used to set Storm SSH password leave unset for docker secrets
+
+ZK_PORT_2181_TCP_ADDR     # used to set ZOOKEEPER_IP leave unset to use eval $ZOOKEEPER_COMMAND
+NIMBUS_PORT_6627_TCP_ADDR # used to set NIMBUS_IPs leave unset to use eval $NIMBUS_COMMAND
+DRPC_PORT_6627_TCP_ADDR   # used to set DRPC_IP leave unset to use eval $DRPC_COMMAND
 ```
