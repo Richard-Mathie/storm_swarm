@@ -2,8 +2,6 @@ FROM ricmathie/python_java:2.7_8
 
 MAINTAINER ricmathie
 
-RUN echo 'root:mercuryisgreat' | chpasswd
-
 ENV STORM_VERSION 1.0.2
 
 RUN curl -fSL "http://mirrors.sonic.net/apache/storm/apache-storm-$STORM_VERSION/apache-storm-$STORM_VERSION.tar.gz" -o storm.tar.gz && \

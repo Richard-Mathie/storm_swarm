@@ -26,10 +26,19 @@ replace_or_append() {
  : ${NIMBUS_COMMAND="hosts_to_yaml $NIMBUS_HOSTS"}
  : ${DRPC_COMMAND="hosts_to_yaml $NIMBUS_HOSTS"}
 
+ : ${STORM_PASSWORD="default_storm_password"}
+ 
 export ZOOKEEPER_IP=${ZK_PORT_2181_TCP_ADDR:=$(eval $ZOOKEEPER_COMMAND)}
 export NIMBUS_IP=${NIMBUS_PORT_6627_TCP_ADDR:=$(eval $NIMBUS_COMMAND)}
 export DRPC_IP=${DRPC_PORT_6627_TCP_ADDR:=$(eval $DRPC_COMMAND)}
 export HOST_IP=$(eval $HOST_COMMAND)
+
+# password secrets
+if [ -f /run/secrets/storm_password ]; then
+   echo /run/secrets/storm_password | chpasswd
+else
+   echo $STORM_PASSWORD | chpasswd
+fi
 
 sed -i -e "s/%zookeeper%/$ZOOKEEPER_IP/g" $STORM_HOME/conf/storm.yaml
 sed -i -e "s/%nimbus_seeds%/$NIMBUS_IP/g" $STORM_HOME/conf/storm.yaml
