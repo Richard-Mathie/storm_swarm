@@ -1,4 +1,4 @@
-FROM ricmathie/python_cassandra:python_2.7
+FROM ricmathie/python_cassandra:pypy_2
 
 MAINTAINER ricmathie <richard.mathie@amey.co.uk>
 
@@ -16,6 +16,10 @@ RUN apt-get update && apt-get install ca-certificates curl -y && \
 	mkdir -p /usr/lib/jvm && mv /tmp/jdk1.${VERSION}.0_${UPDATE} "${JAVA_HOME}" && \
 	apt-get autoclean && apt-get --purge -y autoremove && \
 	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+RUN pip install --no-cache virtualenv \
+ && ln /usr/local/bin/pypy /usr/local/bin/python \
+ && ln /usr/local/bin/pypy /usr/local/bin/python2
 
 RUN update-alternatives --install "/usr/bin/java" "java" "${JAVA_HOME}/bin/java" 1 && \
 	  update-alternatives --install "/usr/bin/javaws" "javaws" "${JAVA_HOME}/bin/javaws" 1 && \

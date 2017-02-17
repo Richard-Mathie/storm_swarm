@@ -1,4 +1,4 @@
-FROM ricmathie/storm:1.0.2
+FROM ricmathie/storm:1.0.2_pypy
 MAINTAINER ricmathie
 
 EXPOSE 8080
