@@ -1,4 +1,4 @@
-FROM python:2.7
+FROM ricmathie/python_cassandra:python_2.7
 
 MAINTAINER ricmathie <richard.mathie@amey.co.uk>
 
@@ -18,11 +18,11 @@ RUN apt-get update && apt-get install ca-certificates curl -y && \
 	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN update-alternatives --install "/usr/bin/java" "java" "${JAVA_HOME}/bin/java" 1 && \
-	update-alternatives --install "/usr/bin/javaws" "javaws" "${JAVA_HOME}/bin/javaws" 1 && \
-	update-alternatives --install "/usr/bin/javac" "javac" "${JAVA_HOME}/bin/javac" 1 && \
-	update-alternatives --set java "${JAVA_HOME}/bin/java" && \
-	update-alternatives --set javaws "${JAVA_HOME}/bin/javaws" && \
-	update-alternatives --set javac "${JAVA_HOME}/bin/javac"
+	  update-alternatives --install "/usr/bin/javaws" "javaws" "${JAVA_HOME}/bin/javaws" 1 && \
+	  update-alternatives --install "/usr/bin/javac" "javac" "${JAVA_HOME}/bin/javac" 1 && \
+	  update-alternatives --set java "${JAVA_HOME}/bin/java" && \
+	  update-alternatives --set javaws "${JAVA_HOME}/bin/javaws" && \
+	  update-alternatives --set javac "${JAVA_HOME}/bin/javac"
 
 RUN apt-get update && apt-get install -y \
     unzip \

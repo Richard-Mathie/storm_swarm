@@ -1,8 +1,10 @@
-FROM ricmathie/storm
+FROM ricmathie/storm:1.0.2
 MAINTAINER ricmathie
-RUN /usr/bin/config-supervisord.sh ui
 
 EXPOSE 8080
+
+RUN /usr/bin/config-supervisord.sh ui
+
 CMD /usr/bin/start-supervisor.sh
 
 

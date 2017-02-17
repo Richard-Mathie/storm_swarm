@@ -1,4 +1,4 @@
-FROM ricmathie/storm-python
+FROM ricmathie/storm:1.0.2
 MAINTAINER ricmathie
 
 EXPOSE 6627

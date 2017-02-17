@@ -10,7 +10,7 @@ Modified from [wurstmeister/docker-storm](https://github.com/wurstmeister/storm-
 Create a swarm and an overlay or bridge network `mynet`
 
 ```
-# Secret for password: enter password you want and ctrl+D to exit 
+# Secret for root:password enter password you want and ctrl+D to exit 
 docker secret create storm_password -
 
 
