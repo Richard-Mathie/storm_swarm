@@ -1,8 +1,8 @@
-FROM ricmathie/python_java:1.0.2
+FROM ricmathie/python_java:1.0.3
 
 MAINTAINER ricmathie
 
-ENV STORM_VERSION 1.0.2
+ENV STORM_VERSION 1.0.3
 
 RUN curl -fSL "http://www.gtlib.gatech.edu/pub/apache/storm/apache-storm-$STORM_VERSION/apache-storm-$STORM_VERSION.tar.gz" -o storm.tar.gz && \
     curl -fSL "http://www.us.apache.org/dist/storm/apache-storm-$STORM_VERSION/apache-storm-$STORM_VERSION.tar.gz.asc" -o storm.tar.gz.asc && \
