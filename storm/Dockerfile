@@ -1,8 +1,8 @@
-FROM ricmathie/python_java:1.0.2
+FROM ricmathie/python_java:1.0.5
 
 MAINTAINER ricmathie
 
-ENV STORM_VERSION 1.0.2
+ENV STORM_VERSION 1.0.5
 
 RUN curl -fSL "http://www.gtlib.gatech.edu/pub/apache/storm/apache-storm-$STORM_VERSION/apache-storm-$STORM_VERSION.tar.gz" -o storm.tar.gz && \
     curl -fSL "http://www.us.apache.org/dist/storm/apache-storm-$STORM_VERSION/apache-storm-$STORM_VERSION.tar.gz.asc" -o storm.tar.gz.asc && \
@@ -35,7 +35,7 @@ RUN ln -s $STORM_HOME/bin/storm /usr/bin/storm
 ADD storm.yaml $STORM_HOME/conf/storm.yaml
 ADD cluster.xml $STORM_HOME/logback/cluster.xml
 ADD config-supervisord.sh /usr/bin/config-supervisord.sh
-ADD start-supervisor.sh /usr/bin/start-supervisor.sh 
+ADD start-supervisor.sh /usr/bin/start-supervisor.sh
 
 RUN echo [supervisord] | tee -a /etc/supervisor/supervisord.conf && \
     echo nodaemon=true | tee -a /etc/supervisor/supervisord.conf
