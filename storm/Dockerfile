@@ -14,7 +14,7 @@ RUN curl -fSL "http://www.gtlib.gatech.edu/pub/apache/storm/apache-storm-$STORM_
     tar -xz -C /opt/apache-storm --strip-components=1 -f storm.tar.gz
 
 RUN apt-get update \
-    && apt-get install -y gcc python-dev libssl-dev\
+    && apt-get install -y make gcc python-dev libssl-dev\
     && pip install --no-cache-dir streamparse kafka-python \
     && pip install --no-cache-dir lru-dict ciso8601 ujson python-dateutil \
     && apt-get -y purge gcc python-dev \
