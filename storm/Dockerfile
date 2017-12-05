@@ -1,4 +1,4 @@
-FROM ricmathie/python_java:1.0.2
+FROM ricmathie/python_java:1.0.2_pypy
 
 MAINTAINER ricmathie
 

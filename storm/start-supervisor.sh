@@ -46,4 +46,4 @@ sed -i -e "s/%nimbus_servers%/$DRPC_IP/g" $STORM_HOME/conf/storm.yaml
 
 replace_or_append storm.local.hostname "$HOST_IP" $STORM_HOME/conf/storm.yaml
 
-supervisord -c /etc/supervisor/conf.d
+supervisord
